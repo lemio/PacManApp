@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    overflow: hidden;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 100%;
+}
+
+#game-info {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.label {
+    font-size: 12px;
+    color: #aaa;
+    text-transform: uppercase;
+}
+
+#score, #level, #evolution {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffeb3b;
+}
+
+#music-toggle {
+    padding: 8px 16px;
+    background: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+#music-toggle:hover {
+    background: #45a049;
+}
+
+#music-toggle:active {
+    transform: scale(0.95);
+}
+
+#game-canvas {
+    border: 3px solid #ffeb3b;
+    border-radius: 10px;
+    background: #000;
+    box-shadow: 0 0 20px rgba(255, 235, 59, 0.5);
+    max-width: 100%;
+    height: auto;
+    touch-action: none;
+}
+
+#game-controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#touch-message, #keyboard-message {
+    font-size: 14px;
+    color: #aaa;
+    margin: 5px 0;
+}
+
+@media (min-width: 768px) {
+    #touch-message {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    #keyboard-message {
+        display: none;
+    }
+    
+    #game-info {
+        font-size: 12px;
+    }
+    
+    .info-item {
+        flex: 1 1 40%;
+    }
+}
+
+/* Animation for evolution indicator */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+#evolution {
+    animation: pulse 2s infinite;
+}
