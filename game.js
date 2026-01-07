@@ -15,11 +15,11 @@ const EVOLUTION_STAGES = [
     { name: 'Ultra', dotsNeeded: 100, color: '#ff0000', size: 1.4 }
 ];
 
-// Music tracks for different levels
+// Music configuration for different levels (using Web Audio API)
 const MUSIC_TRACKS = [
-    { level: 1, file: 'level1.mp3', name: 'Level 1' },
-    { level: 2, file: 'level2.mp3', name: 'Level 2' },
-    { level: 3, file: 'level3.mp3', name: 'Level 3' }
+    { level: 1, frequency: 220, waveform: 'sine', name: 'Level 1' },
+    { level: 2, frequency: 270, waveform: 'square', name: 'Level 2' },
+    { level: 3, frequency: 320, waveform: 'sawtooth', name: 'Level 3' }
 ];
 
 class PacManGame {
@@ -105,10 +105,9 @@ class PacManGame {
                 const oscillator = this.audioContext.createOscillator();
                 const gainNode = this.audioContext.createGain();
                 
-                // Different frequencies for different levels
-                const baseFreq = 220 + (this.level * 50);
-                oscillator.frequency.value = baseFreq;
-                oscillator.type = ['sine', 'square', 'sawtooth'][trackIndex % 3];
+                // Use track configuration
+                oscillator.frequency.value = track.frequency;
+                oscillator.type = track.waveform;
                 
                 gainNode.gain.value = 0.1;
                 
