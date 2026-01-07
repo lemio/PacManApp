@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="A Progressive Web App Pac-Man game with swipe controls and dynamic music">
+    <title>Pac-Man PWA</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-info">
+            <div class="info-item">
+                <span class="label">Score:</span>
+                <span id="score">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Level:</span>
+                <span id="level">1</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Evolution:</span>
+                <span id="evolution">Basic</span>
+            </div>
+            <div class="info-item">
+                <button id="music-toggle">🔊 Music ON</button>
+            </div>
+        </div>
+        <canvas id="game-canvas"></canvas>
+        <div id="game-controls">
+            <div id="touch-message">Swipe to control Pac-Man!</div>
+            <div id="keyboard-message">Use Arrow Keys or WASD</div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
