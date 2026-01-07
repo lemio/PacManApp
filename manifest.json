@@ -2,7 +2,7 @@
   "name": "Pac-Man PWA",
   "short_name": "Pac-Man",
   "description": "A Progressive Web App Pac-Man game with swipe controls",
-  "start_url": "/",
+  "start_url": "/PacManApp/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
