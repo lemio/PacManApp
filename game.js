@@ -6,6 +6,14 @@ const PACMAN_SPEED = 2;
 const GHOST_SPEED = 1.5;
 const SWIPE_THRESHOLD = 5; // Minimum 5px swipe detection
 
+// Direction vectors
+const DIRECTIONS = [
+    { x: 1, y: 0 },   // Right
+    { x: -1, y: 0 },  // Left
+    { x: 0, y: 1 },   // Down
+    { x: 0, y: -1 }   // Up
+];
+
 // Evolution stages
 const EVOLUTION_STAGES = [
     { name: 'Basic', dotsNeeded: 0, color: '#ffff00', size: 1 },
@@ -93,10 +101,10 @@ class PacManGame {
         // Stop current music
         this.stopMusic();
         
-        if (!this.musicEnabled) return;
+        if (!this.musicEnabled || MUSIC_TRACKS.length === 0) return;
         
         // Calculate which track to play based on level depth
-        const trackIndex = Math.min(this.level - 1, MUSIC_TRACKS.length - 1);
+        const trackIndex = Math.max(0, Math.min(this.level - 1, MUSIC_TRACKS.length - 1));
         const track = MUSIC_TRACKS[trackIndex];
         
         // Create oscillator for simple background music
@@ -386,13 +394,7 @@ class PacManGame {
         this.ghosts.forEach(ghost => {
             // Simple AI: occasionally change direction
             if (Math.random() < 0.02) {
-                const directions = [
-                    { x: 1, y: 0 },
-                    { x: -1, y: 0 },
-                    { x: 0, y: 1 },
-                    { x: 0, y: -1 }
-                ];
-                ghost.direction = directions[Math.floor(Math.random() * directions.length)];
+                ghost.direction = DIRECTIONS[Math.floor(Math.random() * DIRECTIONS.length)];
             }
             
             // Move ghost
@@ -404,13 +406,7 @@ class PacManGame {
                 ghost.y = newY;
             } else {
                 // Change direction if hit wall
-                const directions = [
-                    { x: 1, y: 0 },
-                    { x: -1, y: 0 },
-                    { x: 0, y: 1 },
-                    { x: 0, y: -1 }
-                ];
-                ghost.direction = directions[Math.floor(Math.random() * directions.length)];
+                ghost.direction = DIRECTIONS[Math.floor(Math.random() * DIRECTIONS.length)];
             }
         });
     }
